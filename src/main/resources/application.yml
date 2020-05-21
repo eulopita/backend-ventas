@@ -1,0 +1,41 @@
+server:  
+  servlet:
+   context-path: /ventas
+  port : 8085 
+
+
+# ===============================
+# = DATA SOURCE ORACLE
+# ===============================
+
+#configuracion oracle basica
+spring:         
+    datasource:     
+     url: jdbc:oracle:thin:@192.168.0.78:1521:ORCL
+     username: SISVENTAS
+     password: Admin123      
+     driver-class-name: oracle.jdbc.OracleDriver    
+     hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5  
+     #jndi-name: jdbc/DSventas      
+     sql-script-encoding: UTF-8     
+     #hibernate config
+    jpa:
+     properties:        hibernate:
+          default_schema: SISVENTAS        
+     database-platform: org.hibernate.dialect.Oracle10gDialect
+     show-sql: true           
+    
+      
+
+#CONFIGURAR DE LOS LOGS POR DEFAULT EL FILE MAX SIZE SON 10MB       
+logging:
+  level:
+    root: INFO
+    com.memorynotfound: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: debug 
+    
+    
